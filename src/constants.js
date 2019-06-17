@@ -1,11 +1,13 @@
 const WIDTH = 1200;
 const HEIGHT = 800;
-const TIMES_PLAYINGFIELD = 10;
+const TIMES_PLAYINGFIELD = 2; // TIMES_PLAYINGFIELD + starting area !!!
 const SCENE_W = WIDTH * TIMES_PLAYINGFIELD; // = WIDTH * i in the background.js  (set to 20 in the end with 5 crystals each) + empty starting area
 const SCENE_H = 800;
 
 const GRAVITY = 0.35;
 let jumpCounter = 0;
+
+const diamondColorsArray = ["red", "yellow", "green", "blue"];
 
 function preload() {
   // player("blue")
@@ -88,16 +90,25 @@ function preload() {
     4
   );
 
-  allPlayersJump = loadSpriteSheet(
-    "../assets/Dino Sprites/particles/jump_x6_28x28.png",
-    28,
-    28,
-    6
+  // health bar images
+
+  // diamond("green")
+  greenDiamond = loadImage(
+    "../assets/Obstacles & Objects/crystals/crystal_green_64x64.png"
   );
-  allPlayersLand = loadSpriteSheet(
-    "../assets/Dino Sprites/particles/landing_x4_44x32.png",
-    44,
-    32,
-    4
+
+  // diamond("red")
+  redDiamond = loadImage(
+    "../assets/Obstacles & Objects/crystals/crystal_red_64x64.png"
+  );
+
+  // diamond("blue")
+  blueDiamond = loadImage(
+    "../assets/Obstacles & Objects/crystals/crystal_blue_64x64.png"
+  );
+
+  // diamond("yellow")
+  yellowDiamond = loadImage(
+    "../assets/Obstacles & Objects/crystals/crystal_yellow_64x64.png"
   );
 }

@@ -61,5 +61,6 @@ class Background {
     image(this.signForward, 50, 710 - this.signForward.height);
     // sign danger
     image(this.signDanger, WIDTH * 1.5, 710 - this.signDanger.height);
+    image(greenDiamond, width / 2, height / 2); // for testing
   }
 }

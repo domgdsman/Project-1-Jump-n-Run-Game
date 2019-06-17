@@ -8,6 +8,7 @@ class Player {
     this.playerX = WIDTH / 2;
     this.playerY = HEIGHT - 96 - this.playerHeight / 2 + 4; // 690: sprites are positioned centered by default + 4 for grass level adjustment
     this.velocity = 8;
+    this.health = 3;
   }
 
   setup() {
@@ -41,13 +42,17 @@ class Player {
     if (this.hitBox.position.x >= SCENE_W + WIDTH / 2)
       camera.position.x = SCENE_W + WIDTH / 2;
 
+    // display correct health
+    // if ((this.health = 3)) image(health30, 600, 400);
+
     drawSprites();
 
     // lock the player position inside limited playing field
-    if (this.hitBox.position.x < 0) this.hitBox.position.x = 0;
+    if (this.hitBox.position.x < this.playerWidth / 2)
+      this.hitBox.position.x = this.playerWidth / 2;
     if (this.hitBox.position.y < 0) this.hitBox.position.y = 0;
-    if (this.hitBox.position.x > SCENE_W + WIDTH)
-      this.hitBox.position.x = SCENE_W + WIDTH;
+    if (this.hitBox.position.x > SCENE_W + WIDTH - this.playerWidth / 2)
+      this.hitBox.position.x = SCENE_W + WIDTH - this.playerWidth / 2;
     if (this.hitBox.position.y > SCENE_H) this.hitBox.position.y = SCENE_H;
 
     console.log(this.hitBox.position.y); // for testing
