@@ -1,6 +1,6 @@
 const WIDTH = 1200;
 const HEIGHT = 800;
-const TIMES_PLAYINGFIELD = 2; // TIMES_PLAYINGFIELD + starting area !!!
+const TIMES_PLAYINGFIELD = 10; // TIMES_PLAYINGFIELD + starting area !!!
 const SCENE_W = WIDTH * TIMES_PLAYINGFIELD; // = WIDTH * i in the background.js  (set to 20 in the end with 5 crystals each) + empty starting area
 const SCENE_H = 800;
 
@@ -91,6 +91,27 @@ function preload() {
   );
 
   // health bar images
+  health00 = loadImage(
+    "../assets/Obstacles & Objects/health/health00_150x48.png"
+  );
+  health05 = loadImage(
+    "../assets/Obstacles & Objects/health/health05_150x48.png"
+  );
+  health10 = loadImage(
+    "../assets/Obstacles & Objects/health/health10_150x48.png"
+  );
+  health15 = loadImage(
+    "../assets/Obstacles & Objects/health/health15_150x48.png"
+  );
+  health20 = loadImage(
+    "../assets/Obstacles & Objects/health/health20_150x48.png"
+  );
+  health25 = loadImage(
+    "../assets/Obstacles & Objects/health/health25_150x48.png"
+  );
+  health30 = loadImage(
+    "../assets/Obstacles & Objects/health/health30_150x48.png"
+  );
 
   // diamond("green")
   greenDiamond = loadImage(

@@ -1,4 +1,5 @@
 let hitBox;
+let score = 0;
 
 class Player {
   constructor() {
@@ -9,6 +10,8 @@ class Player {
     this.playerY = HEIGHT - 96 - this.playerHeight / 2 + 4; // 690: sprites are positioned centered by default + 4 for grass level adjustment
     this.velocity = 8;
     this.health = 3;
+    // add player color to either select from starting screen or change with diamonds collected
+    this.score = score; // add player score to increase on diamond collision
   }
 
   setup() {
@@ -18,6 +21,16 @@ class Player {
       this.playerWidth,
       this.playerHeight
     );
+
+    this.hitBox.setCollider(
+      "rectangle",
+      0,
+      0,
+      this.playerWidth,
+      this.playerHeight
+    );
+
+    this.hitBox.score = this.score;
 
     // load sprite animations
     this.idleAnimation = this.hitBox.addAnimation("idle", bluePlayerIdle);
@@ -55,8 +68,22 @@ class Player {
       this.hitBox.position.x = SCENE_W + WIDTH - this.playerWidth / 2;
     if (this.hitBox.position.y > SCENE_H) this.hitBox.position.y = SCENE_H;
 
-    console.log(this.hitBox.position.y); // for testing
-    console.log(this.hitBox.position.x); // for testing
+    // health bar
+    if (this.health === 3) image(health30, camera.position.x - width / 2, 0);
+    else if (this.health === 2.5)
+      image(health25, camera.position.x - width / 2, 0);
+    else if (this.health === 2)
+      image(health20, camera.position.x - width / 2, 0);
+    else if (this.health === 1.5)
+      image(health15, camera.position.x - width / 2, 0);
+    else if (this.health === 1)
+      image(health10, camera.position.x - width / 2, 0);
+    else if (this.health === 0.5)
+      image(health05, camera.position.x - width / 2, 0);
+    else image(health00, camera.position.x - width / 2, 0);
+
+    // console.log(this.hitBox.position.x); // for testing: display player x-position
+    // console.log(this.hitBox.position.y); // for testing: display player y-position
 
     // gravity & velocity components
     this.hitBox.position.y += this.velocity;
