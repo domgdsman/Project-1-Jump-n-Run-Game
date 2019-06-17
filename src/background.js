@@ -1,10 +1,4 @@
 class Background {
-  constructor() {
-    // landscape layer = 1
-    this.landscapeX1 = 0;
-    this.landscapeX2 = WIDTH;
-  }
-
   setup() {
     // landscape layer = 1
     this.redHills = loadImage(
@@ -35,39 +29,37 @@ class Background {
     this.grassFloorImg = loadImage(
       "../assets/Backgrounds/ground/gras_block_1200x96.png"
     );
+
+    // background decoration
+    this.signForward = loadImage(
+      "../assets/Obstacles & Objects/signs/board_forward_128x128.png"
+    );
+    this.signDanger = loadImage(
+      "../assets/Obstacles & Objects/signs/board_poison_128x128.png"
+    );
   }
 
   draw() {
-    // background("aliceblue"); // for testing
-
-    // landscape layer = 1
-    image(this.redHills, 0, 0);
-    // image(this.misticalHillsImg, this.landscapeX2, 0, width, height);
-    // landscape layer = 2
-    image(this.occaBushes, 0, 710 - this.occaBushes.height);
-    // landscape layer = 3
-    image(this.darkGreenBushes, 0, 710 - this.darkGreenBushes.height);
-    // landscape layer = 4
-    image(this.tropicalBushes, 0, 710 - this.tropicalBushes.height);
-    // landscape layer = 5
-    image(this.grass, 0, 740 - this.grass.height);
-    // landscape layer = 6
-    image(this.foregroundBushes, 0, 710 - this.foregroundBushes.height);
-
-    /* 
-    // moving background function
-    this.landscapeX1 -= 5;
-    this.landscapeX2 -= 5;
-    
-    if (this.landscapeX1 < -width) {
-      this.landscapeX1 = width;
+    for (let i = 0; i <= SCENE_W; i += WIDTH) {
+      // landscape layer = 1
+      image(this.redHills, i, 0);
+      // landscape layer = 2
+      image(this.occaBushes, i, 710 - this.occaBushes.height);
+      // landscape layer = 3
+      image(this.darkGreenBushes, i, 710 - this.darkGreenBushes.height);
+      // landscape layer = 4
+      image(this.tropicalBushes, i, 710 - this.tropicalBushes.height);
+      // landscape layer = 5
+      image(this.grass, i, 740 - this.grass.height);
+      // landscape layer = 6
+      image(this.foregroundBushes, i, 710 - this.foregroundBushes.height);
+      // ground floor layer = 7
+      image(this.grassFloorImg, i, height - this.grassFloorImg.height);
     }
-    if (this.landscapeX2 < -width) {
-      this.landscapeX2 = width;
-    }
-    */
 
-    // ground floor layer = 4
-    image(this.grassFloorImg, 0, height - this.grassFloorImg.height);
+    // sign forward
+    image(this.signForward, 50, 710 - this.signForward.height);
+    // sign danger
+    image(this.signDanger, WIDTH * 1.5, 710 - this.signDanger.height);
   }
 }
