@@ -1,5 +1,4 @@
 class Rocket {
-  // add sprite for rocket trail if possible
   constructor() {
     this.randomDirectionArray = [-1, 1]; // array to choose from
     this.rocketDirection = this.randomDirectionArray[Math.round(Math.random())]; // randomly picks an index to select direction
@@ -7,7 +6,7 @@ class Rocket {
     this.rocketHeight = 44;
     this.rocketX = camera.position.x + (WIDTH / 2) * this.rocketDirection;
     this.rocketY = this.rocketHeight + Math.random() * 656;
-    this.speed = 5 * this.rocketDirection;
+    this.speed = 5 * this.rocketDirection; // adjust rocket speed here
   }
   setup() {
     this.rocketHitBox = createSprite(
@@ -23,7 +22,9 @@ class Rocket {
 
     this.rocketHitBox.damagePotentiale = 0.5; // makes sure the player is hurt only once by a single rocket
 
-    this.rocketHitBox.debug = true; // remove when finished
+    this.rocketHitBox.rocketDirection = this.rocketDirection;
+
+    // this.rocketHitBox.debug = true; // remove when finished
   }
   draw() {
     drawSprite(this.rocketHitBox);

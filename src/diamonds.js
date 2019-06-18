@@ -8,7 +8,7 @@ class Diamond {
       WIDTH +
       Math.ceil(Math.random() * TIMES_PLAYINGFIELD * WIDTH) -
       this.diamondWidth;
-    this.diamondY = 64 + Math.random() * 600;
+    this.diamondY = this.diamondWidth + Math.random() * 600;
   }
 
   setup() {
@@ -34,7 +34,7 @@ class Diamond {
 
     this.diamondHitBox.color = this.diamondColor;
 
-    this.diamondHitBox.debug = true; // remove when finished
+    // this.diamondHitBox.debug = true; // remove when finished
   }
 
   draw() {

@@ -1,4 +1,4 @@
-const game = new Game();
+const game = new Game("green");
 
 function setup() {
   frameRate(60);

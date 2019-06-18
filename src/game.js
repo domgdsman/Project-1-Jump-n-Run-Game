@@ -1,10 +1,12 @@
 class Game {
   constructor(color) {
+    this.timer = 60;
     this.background = new Background();
-    this.player = new Player();
+    this.player = new Player(color);
     this.diamondsArray = [];
+    this.hpArray = [];
+    this.clockArray = [];
     this.rocketsArray = [];
-    // this.rocket = new Rocket(); // for testing
   }
 
   setup() {
@@ -12,14 +14,30 @@ class Game {
     this.player.setup();
     this.DIAMONDS = new Group();
     for (let i = 0; i < TIMES_PLAYINGFIELD * 5; i++) {
+      // adjust diamond spawn here
       this.diamondsArray.push(new Diamond());
       this.diamondsArray[i].setup();
       this.DIAMONDS.add(this.diamondsArray[i].diamondHitBox);
       this.diamondsArray[i].diamondHitBox.bounce(this.DIAMONDS); // this makes sure each diamond is bounced off, when placed in same x-y-position as a previously placed diamond
     }
+    this.HEALTHPACKS = new Group();
+    for (let i = 0; i < Math.round(TIMES_PLAYINGFIELD / 3); i++) {
+      // adjust hp spawn here
+      this.hpArray.push(new Healthpack());
+      this.hpArray[i].setup();
+      this.HEALTHPACKS.add(this.hpArray[i].hpHitBox);
+      this.hpArray[i].hpHitBox.bounce(this.DIAMONDS); // this makes sure hp are not placed on diamonds
+    }
+    this.CLOCKS = new Group();
+    for (let i = 0; i < Math.round(TIMES_PLAYINGFIELD / 3); i++) {
+      // adjust clock spawn here
+      this.clockArray.push(new Clock());
+      this.clockArray[i].setup();
+      this.CLOCKS.add(this.clockArray[i].clockHitBox);
+      this.clockArray[i].clockHitBox.bounce(this.HEALTHPACKS); // this makes sure clocks are not placed on health packs
+      this.clockArray[i].clockHitBox.bounce(this.DIAMONDS); // this makes sure clocks are not placed on diamonds
+    }
     this.ROCKETS = new Group();
-    // this.rocket.setup(); // for testing
-    // this.ROCKETS.add(this.rocket.rocketHitBox); // for testing
   }
 
   draw() {
@@ -28,16 +46,22 @@ class Game {
     this.diamondsArray.forEach(function(diamond) {
       diamond.draw();
     });
+    this.hpArray.forEach(function(healthpack) {
+      healthpack.draw();
+    });
+    this.clockArray.forEach(function(clock) {
+      clock.draw();
+    });
 
-    // readying up rockets every 120 frames
-    if (frameCount % 45 === 0) {
+    // readying up rockets every x frames, adjust rocket spawn here
+    if (frameCount % 40 === 0) {
       this.rocketsArray.push(new Rocket());
       this.rocketsArray[this.rocketsArray.length - 1].setup();
       this.ROCKETS.add(
         this.rocketsArray[this.rocketsArray.length - 1].rocketHitBox
       );
     }
-    // deleting rockets every 300 frames
+    // deleting rockets every x frames, adjust if it gets too laggy
     if (frameCount % 300 === 0) {
       this.rocketsArray.shift().rocketHitBox.remove();
     }
@@ -46,7 +70,16 @@ class Game {
     this.rocketsArray.forEach(function(rocket) {
       rocket.draw();
     });
+
+    // possible game endings by death or time out
     if (this.player.health === 0) this.game.over();
+    if (frameCount % 60 == 0 && this.timer > 0) {
+      this.timer--;
+      // console.log(this.timer); // for testing
+    }
+    if (this.timer === 0) {
+      this.game.over();
+    }
   }
 
   over() {

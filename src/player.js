@@ -1,5 +1,5 @@
 class Player {
-  constructor() {
+  constructor(color) {
     this.playerWidth = 46;
     this.playerHeight = 52;
     this.playerX = WIDTH / 2;
@@ -8,7 +8,8 @@ class Player {
     this.jumpCounter = 0;
     this.health = 3;
     this.score = 0;
-    this.color = "blue"; // make it adjustable for DOM manipulation and insert ${this.color} to load animations
+    this.color = color;
+    this.status = "idle";
   }
 
   setup() {
@@ -27,12 +28,32 @@ class Player {
       this.playerHeight
     );
 
-    // load sprite animations
-    this.idleAnimation = this.hitBox.addAnimation("idle", bluePlayerIdle);
-    this.runAnimation = this.hitBox.addAnimation("run", bluePlayerRun);
-    this.hurtAnimation = this.hitBox.addAnimation("hurt", bluePlayerHurt);
+    // load sprite sheets dependent on player color
 
-    this.hitBox.debug = true; // remove when finished
+    this.idleSpriteSheet = loadSpriteSheet(
+      `../assets/Dino Sprites/${this.color}_idle_x4_72x72.png`,
+      72,
+      72,
+      4
+    );
+    this.runSpriteSheet = loadSpriteSheet(
+      `../assets/Dino Sprites/${this.color}_running_x6_72x72.png`,
+      72,
+      72,
+      6
+    );
+    this.hurtSpriteSheet = loadSpriteSheet(
+      `../assets/Dino Sprites/${this.color}_hurt_x4_72x72.png`,
+      72,
+      72,
+      4
+    );
+
+    this.idleAnimation = this.hitBox.addAnimation("idle", this.idleSpriteSheet);
+    this.runAnimation = this.hitBox.addAnimation("run", this.runSpriteSheet);
+    this.hurtAnimation = this.hitBox.addAnimation("hurt", this.hurtSpriteSheet);
+
+    // this.hitBox.debug = true; // remove when finished
   }
 
   jump() {
@@ -43,22 +64,41 @@ class Player {
     this.jumpCounter++;
   }
 
-  collect(collected) {
-    // add a scoring system dependent on diamond color and player color
+  collectDiamond(collected) {
     // play a sound for collecting the diamond
     if (this.color === collected.color) {
       this.score += 10;
     } else this.score += 5;
-    console.log(this.score);
+    // console.log(this.score); // for testing
+    collected.remove();
+  }
+
+  collectHp(collected) {
+    collected.remove();
+    if (this.health === 3) {
+      return;
+    } else if (this.health === 2.5) {
+      this.health += 0.5;
+    } else this.health += 1;
+  }
+
+  collectClock(collected) {
+    game.timer += 10;
     collected.remove();
   }
 
   receiveDamage(rocket) {
     rocket.changeAnimation("explode", rocketExplosion);
-    // this.hitBox.changeAnimation("hurt", bluePlayerHurt); // is not displayed properly. Animation changes to "idle" on next frame
+    this.status = "hurt";
+
+    setTimeout(() => {
+      this.status = "idle";
+      console.log(this.status);
+    }, 840);
+
     this.health -= rocket.damagePotentiale;
     rocket.damagePotentiale = 0;
-    // this.hitBox.position.x -= 30;
+    this.hitBox.position.x -= 30 * rocket.rocketDirection;
     setTimeout(rocket.remove.bind(rocket), 420); // setTimeout() concept from Montasar!!!
   }
 
@@ -103,11 +143,11 @@ class Player {
       this.hitBox.position.y = 690; // reset to ground level
     } else this.velocity += GRAVITY;
 
-    this.hitBox.changeAnimation("idle", this.idleAnimation);
+    this.hitBox.changeAnimation(this.status);
 
     if (keyIsDown(LEFT_ARROW)) {
       this.hitBox.mirrorX(-1); // reverts sprite image direction
-      this.hitBox.changeAnimation("run", this.bluePlayerRun);
+      this.hitBox.changeAnimation("run", this.runAnimation);
       this.hitBox.setSpeed(10, 180);
     } else if (keyIsDown(RIGHT_ARROW)) {
       this.hitBox.mirrorX(1);
@@ -116,7 +156,15 @@ class Player {
     } else this.hitBox.setSpeed(0);
 
     this.hitBox.collide(game.DIAMONDS, (collector, collected) =>
-      this.collect(collected)
+      this.collectDiamond(collected)
+    );
+
+    this.hitBox.collide(game.HEALTHPACKS, (collector, collected) =>
+      this.collectHp(collected)
+    );
+
+    this.hitBox.collide(game.CLOCKS, (collector, collected) =>
+      this.collectHp(collected)
     );
 
     this.hitBox.collide(game.ROCKETS, (player, rocket) =>
