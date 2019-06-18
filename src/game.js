@@ -46,5 +46,10 @@ class Game {
     this.rocketsArray.forEach(function(rocket) {
       rocket.draw();
     });
+    if (this.player.health === 0) this.game.over();
+  }
+
+  over() {
+    noLoop();
   }
 }

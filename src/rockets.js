@@ -1,11 +1,13 @@
 class Rocket {
   // add sprite for rocket trail if possible
   constructor() {
+    this.randomDirectionArray = [-1, 1]; // array to choose from
+    this.rocketDirection = this.randomDirectionArray[Math.round(Math.random())]; // randomly picks an index to select direction
     this.rocketWidth = 64;
     this.rocketHeight = 44;
-    this.rocketX = camera.position.x + WIDTH / 2;
+    this.rocketX = camera.position.x + (WIDTH / 2) * this.rocketDirection;
     this.rocketY = this.rocketHeight + Math.random() * 656;
-    this.speed = 5;
+    this.speed = 5 * this.rocketDirection;
   }
   setup() {
     this.rocketHitBox = createSprite(
@@ -25,6 +27,7 @@ class Rocket {
   }
   draw() {
     drawSprite(this.rocketHitBox);
+    this.rocketHitBox.mirrorX(this.rocketDirection); // reverts sprite image direction
     this.rocketHitBox.position.x -= this.speed;
   }
 }

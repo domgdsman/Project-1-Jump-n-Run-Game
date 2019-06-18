@@ -100,6 +100,7 @@ class Player {
     // stop gravity when player reaches ground
     if (this.hitBox.position.y >= 690) {
       this.velocity = 0;
+      this.hitBox.position.y = 690; // reset to ground level
     } else this.velocity += GRAVITY;
 
     this.hitBox.changeAnimation("idle", this.idleAnimation);
