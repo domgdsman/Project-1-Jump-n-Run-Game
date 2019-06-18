@@ -2,40 +2,40 @@ class Background {
   setup() {
     // landscape layer = 1
     this.redHills = loadImage(
-      "../assets/Backgrounds/landscapes/layer_01_1200x730.png"
+      "assets/Backgrounds/landscapes/layer_01_1200x730.png"
     );
     // landscape layer = 2
     this.occaBushes = loadImage(
-      "../assets/Backgrounds/landscapes/layer_02_1200x624.png"
+      "assets/Backgrounds/landscapes/layer_02_1200x624.png"
     );
     // landscape layer = 3
     this.darkGreenBushes = loadImage(
-      "../assets/Backgrounds/landscapes/layer_03_1200x612.png"
+      "assets/Backgrounds/landscapes/layer_03_1200x612.png"
     );
     // landscape layer = 4
     this.tropicalBushes = loadImage(
-      "../assets/Backgrounds/landscapes/layer_04_1200x606.png"
+      "assets/Backgrounds/landscapes/layer_04_1200x606.png"
     );
     // landscape layer = 5
     this.grass = loadImage(
-      "../assets/Backgrounds/landscapes/layer_05_1200x600.png"
+      "assets/Backgrounds/landscapes/layer_05_1200x600.png"
     );
     // landscape layer = 6
     this.foregroundBushes = loadImage(
-      "../assets/Backgrounds/landscapes/layer_06_1200x600.png"
+      "assets/Backgrounds/landscapes/layer_06_1200x600.png"
     );
 
     // ground
     this.grassFloorImg = loadImage(
-      "../assets/Backgrounds/ground/gras_block_1200x96.png"
+      "assets/Backgrounds/ground/gras_block_1200x96.png"
     );
 
     // background decoration
     this.signForward = loadImage(
-      "../assets/Obstacles & Objects/signs/board_forward_128x128.png"
+      "assets/Objects/signs/board_forward_128x128.png"
     );
     this.signDanger = loadImage(
-      "../assets/Obstacles & Objects/signs/board_poison_128x128.png"
+      "assets/Objects/signs/board_poison_128x128.png"
     );
   }
 

@@ -1,7 +1,7 @@
-const game = new Game(); // "blue" change player color here over DOM manipulation
+const game = new Game();
 
 function setup() {
-  frameRate(60); // for testing
+  frameRate(60);
   let canvas = createCanvas(WIDTH, HEIGHT);
   canvas.parent("game-area");
   game.setup();

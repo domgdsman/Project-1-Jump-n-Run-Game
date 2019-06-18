@@ -9,7 +9,6 @@ class Diamond {
       Math.ceil(Math.random() * TIMES_PLAYINGFIELD * WIDTH) -
       this.diamondWidth;
     this.diamondY = 64 + Math.random() * 600;
-    // this.points = 5;
   }
 
   setup() {
@@ -21,12 +20,9 @@ class Diamond {
     );
 
     this.diamondHitBox.addAnimation(
-      "yellow",
-      `../assets/Obstacles & Objects/crystals/crystal_${
-        this.diamondColor
-      }_64x64.png`
+      "color",
+      `assets/Objects/crystals/crystal_${this.diamondColor}_64x64.png`
     );
-    // this.diamondHitBox.points = this.points;
 
     this.diamondHitBox.setCollider(
       "rectangle",
@@ -36,10 +32,12 @@ class Diamond {
       this.diamondHeight - 24
     );
 
+    this.diamondHitBox.color = this.diamondColor;
+
     this.diamondHitBox.debug = true; // remove when finished
   }
 
   draw() {
-    drawSprite();
+    drawSprite(this.diamondHitBox);
   }
 }
