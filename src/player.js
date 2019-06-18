@@ -1,17 +1,14 @@
-let hitBox;
-let score = 0;
-
 class Player {
   constructor() {
-    this.hitBox = hitBox;
     this.playerWidth = 46;
     this.playerHeight = 52;
     this.playerX = WIDTH / 2;
     this.playerY = HEIGHT - 96 - this.playerHeight / 2 + 4; // 690: sprites are positioned centered by default + 4 for grass level adjustment
     this.velocity = 8;
+    this.jumpCounter = 0;
     this.health = 3;
     // add player color to either select from starting screen or change with diamonds collected
-    this.score = score; // add player score to increase on diamond collision
+    this.score = 0; // add player score to increase on diamond collision
   }
 
   setup() {
@@ -23,6 +20,7 @@ class Player {
     );
 
     this.hitBox.setCollider(
+      // adjust player collider with debug
       "rectangle",
       0,
       0,
@@ -30,21 +28,29 @@ class Player {
       this.playerHeight
     );
 
-    this.hitBox.score = this.score;
-
     // load sprite animations
     this.idleAnimation = this.hitBox.addAnimation("idle", bluePlayerIdle);
     this.runAnimation = this.hitBox.addAnimation("run", bluePlayerRun);
     this.hurtAnimation = this.hitBox.addAnimation("hurt", bluePlayerHurt);
+
+    this.hitBox.debug = true; // remove when finished
   }
 
   jump() {
-    if (this.hitBox.position.y > 650) jumpCounter = 0; // double jump feature refreshes 40p over ground for fluidity
-    if (jumpCounter == 2) return;
+    if (this.hitBox.position.y > 650) this.jumpCounter = 0; // double jump feature refreshes 40p over ground for fluidity
+    if (this.jumpCounter == 2) return;
     this.velocity = 0;
     this.velocity -= 15;
-    jumpCounter++;
+    this.jumpCounter++;
     // console.log(jumpCounter); //for testing
+  }
+
+  collect(collected) {
+    // add a scoring system dependent on diamond color and player color
+    // play a sound for collecting the diamond
+    this.score += 1;
+    console.log(this.score);
+    collected.remove();
   }
 
   draw() {
@@ -54,9 +60,6 @@ class Player {
     if (this.hitBox.position.x <= 600) camera.position.x = 600; // adjust accordingly depending on how long the game field is
     if (this.hitBox.position.x >= SCENE_W + WIDTH / 2)
       camera.position.x = SCENE_W + WIDTH / 2;
-
-    // display correct health
-    // if ((this.health = 3)) image(health30, 600, 400);
 
     drawSprites();
 
@@ -104,5 +107,9 @@ class Player {
       this.hitBox.changeAnimation("run", this.runAnimation);
       this.hitBox.setSpeed(10, 0);
     } else this.hitBox.setSpeed(0);
+
+    this.hitBox.collide(game.DIAMONDS, (collector, collected) =>
+      this.collect(collected)
+    );
   }
 }

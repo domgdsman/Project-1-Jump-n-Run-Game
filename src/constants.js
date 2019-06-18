@@ -1,13 +1,9 @@
 const WIDTH = 1200;
 const HEIGHT = 800;
-const TIMES_PLAYINGFIELD = 10; // TIMES_PLAYINGFIELD + starting area !!!
+const TIMES_PLAYINGFIELD = 3; // TIMES_PLAYINGFIELD + starting area !!!
 const SCENE_W = WIDTH * TIMES_PLAYINGFIELD; // = WIDTH * i in the background.js  (set to 20 in the end with 5 crystals each) + empty starting area
 const SCENE_H = 800;
-
 const GRAVITY = 0.35;
-let jumpCounter = 0;
-
-const diamondColorsArray = ["red", "yellow", "green", "blue"];
 
 function preload() {
   // player("blue")
@@ -114,22 +110,22 @@ function preload() {
   );
 
   // diamond("green")
-  greenDiamond = loadImage(
+  greenDiamond = loadAnimation(
     "../assets/Obstacles & Objects/crystals/crystal_green_64x64.png"
   );
 
   // diamond("red")
-  redDiamond = loadImage(
+  redDiamond = loadAnimation(
     "../assets/Obstacles & Objects/crystals/crystal_red_64x64.png"
   );
 
   // diamond("blue")
-  blueDiamond = loadImage(
+  blueDiamond = loadAnimation(
     "../assets/Obstacles & Objects/crystals/crystal_blue_64x64.png"
   );
 
   // diamond("yellow")
-  yellowDiamond = loadImage(
+  yellowDiamond = loadAnimation(
     "../assets/Obstacles & Objects/crystals/crystal_yellow_64x64.png"
   );
 }
