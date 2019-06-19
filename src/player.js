@@ -10,6 +10,7 @@ class Player {
     this.score = 0;
     this.color = color;
     this.status = "idle";
+    this.onObstacle = false;
   }
 
   setup() {
@@ -53,7 +54,7 @@ class Player {
     this.runAnimation = this.hitBox.addAnimation("run", this.runSpriteSheet);
     this.hurtAnimation = this.hitBox.addAnimation("hurt", this.hurtSpriteSheet);
 
-    // this.hitBox.debug = true; // remove when finished
+    this.hitBox.debug = true; // remove when finished
   }
 
   jump() {
@@ -63,6 +64,8 @@ class Player {
     this.velocity -= 15;
     this.jumpCounter++;
   }
+
+  // walkObstacles(player) {}
 
   collectDiamond(collected) {
     // play a sound for collecting the diamond
@@ -93,7 +96,6 @@ class Player {
 
     setTimeout(() => {
       this.status = "idle";
-      console.log(this.status);
     }, 840);
 
     this.health -= rocket.damagePotentiale;
@@ -135,13 +137,23 @@ class Player {
     else image(health00, camera.position.x - width / 2, 0);
 
     // gravity & velocity components
+
+    this.onObstacle = false; // testing
+
     this.hitBox.position.y += this.velocity;
 
-    // stop gravity when player reaches ground
+    // stop gravity when player reaches ground or stands on obstacles
+
+    // ########
     if (this.hitBox.position.y >= 690) {
       this.velocity = 0;
       this.hitBox.position.y = 690; // reset to ground level
+    } else if (this.hitBox.collide(game.OBSTACLES)) {
+      this.velocity = 0;
+      this.jumpCounter = 0;
     } else this.velocity += GRAVITY;
+
+    // ########
 
     this.hitBox.changeAnimation(this.status);
 

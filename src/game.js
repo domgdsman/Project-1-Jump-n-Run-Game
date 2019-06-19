@@ -3,15 +3,50 @@ class Game {
     this.timer = 60;
     this.background = new Background();
     this.player = new Player(color);
+    this.obstaclesArray = [];
     this.diamondsArray = [];
     this.hpArray = [];
     this.clockArray = [];
     this.rocketsArray = [];
+    this.obstacle = new PresetJ(0); // for testing
   }
 
   setup() {
     this.background.setup();
     this.player.setup();
+    this.OBSTACLES = new Group();
+
+    this.obstacle.setup(); //for testing
+
+    // ############# OBSTACLES #############
+    /*
+    for (let i = 1; i <= TIMES_PLAYINGFIELD; i++) {
+      // one obstacle object per screen starting from second screen
+      this.obstaclesArray.push(
+        // to have empty screens as well
+        [
+          // {},
+          new PresetA(i),
+          new PresetB(
+            i
+          )  ,
+          new PresetC(i),
+          new PresetD(i),
+          new PresetE(i),
+          new PresetF(i),
+          new PresetG(i),
+          new PresetH(i),
+          new PresetI(i),
+          new PresetJ(i) 
+        ][Math.floor(Math.random() * 2)]
+      );
+      console.log(this.obstaclesArray);
+      // if (this.obstaclesArray[i])
+      this.obstaclesArray[i].setup();
+    }
+    */
+    // ############# OBSTACLES #############
+
     this.DIAMONDS = new Group();
     for (let i = 0; i < TIMES_PLAYINGFIELD * 5; i++) {
       // adjust diamond spawn here
@@ -42,7 +77,11 @@ class Game {
 
   draw() {
     this.background.draw();
+
     this.player.draw();
+
+    drawSprites(this.OBSTACLES);
+
     this.diamondsArray.forEach(function(diamond) {
       diamond.draw();
     });
@@ -61,6 +100,7 @@ class Game {
         this.rocketsArray[this.rocketsArray.length - 1].rocketHitBox
       );
     }
+
     // deleting rockets every x frames, adjust if it gets too laggy
     if (frameCount % 300 === 0) {
       this.rocketsArray.shift().rocketHitBox.remove();

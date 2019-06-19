@@ -29,6 +29,6 @@ class Rocket {
   draw() {
     drawSprite(this.rocketHitBox);
     this.rocketHitBox.mirrorX(this.rocketDirection); // reverts sprite image direction
-    this.rocketHitBox.position.x -= this.speed;
+    // this.rocketHitBox.position.x -= this.speed;
   }
 }

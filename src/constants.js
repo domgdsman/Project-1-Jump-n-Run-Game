@@ -1,6 +1,6 @@
 const WIDTH = 1200;
 const HEIGHT = 800;
-const TIMES_PLAYINGFIELD = 20; // TIMES_PLAYINGFIELD + starting area !!!
+const TIMES_PLAYINGFIELD = 2; // TIMES_PLAYINGFIELD + starting area !!!
 const SCENE_W = WIDTH * TIMES_PLAYINGFIELD; // = WIDTH * i in the background.js  (set to 20 in the end with 5 crystals each) + empty starting area
 const SCENE_H = 800;
 const GRAVITY = 0.35;
@@ -33,8 +33,28 @@ function preload() {
   );
 
   // health packs
-  healthPack = loadAnimation("../assets/Objects/hp/health_50x48.png");
+  healthPack = loadImage("../assets/Objects/hp/health_50x48.png");
 
   // clock
-  timePlus = loadAnimation("../assets/Objects/timer/clock_45x50.png");
+  timePlus = loadImage("../assets/Objects/timer/clock_45x50.png");
+
+  // obstacles images ####### DELETE AFTER TESTING #########
+  lightAmboss = loadImage(
+    "../assets/Objects/grass terrain/light_grass_amboss_120x72.png"
+  );
+  darkAmboss = loadImage(
+    "../assets/Objects/grass terrain/dark_grass_amboss_168x72.png"
+  );
+  smallBlock = loadImage(
+    "../assets/Objects/grass terrain/grass_block_small48x48.png"
+  );
+  bigBlock = loadImage(
+    "../assets/Objects/grass terrain/gras_block_big72x72.png"
+  );
+  lightAmbossVert = loadImage(
+    "../assets/Objects/grass terrain/light_grass_amboss_vertical_72x120.png"
+  );
+  darkAmbossVert = loadImage(
+    "../assets/Objects/grass terrain/dark_grass_amboss_vertical_72x168.png"
+  );
 }
