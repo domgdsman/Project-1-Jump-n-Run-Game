@@ -46,11 +46,6 @@ class PresetA {
     this.obstacleHitBoxTwo.setCollider("rectangle", 0, 0, 166, 70);
     this.obstacleHitBoxThree.setCollider("rectangle", 0, 0, 166, 70);
 
-    //  debugger
-    this.obstacleHitBoxOne.debug = true; // for testing
-    this.obstacleHitBoxTwo.debug = true; // for testing
-    this.obstacleHitBoxThree.debug = true; // for testing
-
     // add sprites to global group
     game.OBSTACLES.add(this.obstacleHitBoxOne);
     game.OBSTACLES.add(this.obstacleHitBoxTwo);
@@ -142,14 +137,6 @@ class PresetB {
     this.obstacleHitBoxFive.setCollider("rectangle", 0, 0, 120, 72);
     this.obstacleHitBoxSix.setCollider("rectangle", 0, 0, 72, 168);
 
-    //  debugger
-    this.obstacleHitBoxOne.debug = true; // for testing
-    this.obstacleHitBoxTwo.debug = true; // for testing
-    this.obstacleHitBoxThree.debug = true; // for testing
-    this.obstacleHitBoxFour.debug = true; // for testing
-    this.obstacleHitBoxFive.debug = true; // for testing
-    this.obstacleHitBoxSix.debug = true; // for testing
-
     // add sprites to global group
     game.OBSTACLES.add(this.obstacleHitBoxOne);
     game.OBSTACLES.add(this.obstacleHitBoxTwo);
@@ -232,13 +219,6 @@ class PresetC {
     this.obstacleHitBoxFour.setCollider("rectangle", 0, 0, 120, 72);
     this.obstacleHitBoxFive.setCollider("rectangle", 0, 0, 120, 72);
 
-    //  debugger
-    this.obstacleHitBoxOne.debug = true; // for testing
-    this.obstacleHitBoxTwo.debug = true; // for testing
-    this.obstacleHitBoxThree.debug = true; // for testing
-    this.obstacleHitBoxFour.debug = true; // for testing
-    this.obstacleHitBoxFive.debug = true; // for testing
-
     // add sprites to global group
     game.OBSTACLES.add(this.obstacleHitBoxOne);
     game.OBSTACLES.add(this.obstacleHitBoxTwo);
@@ -247,17 +227,6 @@ class PresetC {
     game.OBSTACLES.add(this.obstacleHitBoxFive);
   }
 }
-
-/*
-class presetFour {}
-image(darkAmbossVert, 200, 400);
-image(lightAmboss, 350, 500);
-image(lightAmboss, 350 + lightAmboss.width, 500);
-image(darkAmbossVert, 700, 400);
-image(darkAmbossVert, 1000, 550);
-image(darkAmbossVert, 1000, 550 - darkAmbossVert.height);
-image(darkAmbossVert, 1000, 550 - darkAmbossVert.height * 2);
-*/
 
 class PresetD {
   constructor(screenNumber) {
@@ -354,15 +323,6 @@ class PresetD {
     this.obstacleHitBoxFive.setCollider("rectangle", 0, 0, 72, 168);
     this.obstacleHitBoxSix.setCollider("rectangle", 0, 0, 72, 168);
     this.obstacleHitBoxSeven.setCollider("rectangle", 0, 0, 72, 168);
-
-    //  debugger
-    this.obstacleHitBoxOne.debug = true; // for testing
-    this.obstacleHitBoxTwo.debug = true; // for testing
-    this.obstacleHitBoxThree.debug = true; // for testing
-    this.obstacleHitBoxFour.debug = true; // for testing
-    this.obstacleHitBoxFive.debug = true; // for testing
-    this.obstacleHitBoxSix.debug = true; // for testing
-    this.obstacleHitBoxSeven.debug = true; // for testing
 
     // add sprites to global group
     game.OBSTACLES.add(this.obstacleHitBoxOne);
@@ -506,18 +466,6 @@ class PresetE {
     this.obstacleHitBoxEight.setCollider("rectangle", 0, 0, 168, 72);
     this.obstacleHitBoxNine.setCollider("rectangle", 0, 0, 72, 72);
     this.obstacleHitBoxTen.setCollider("rectangle", 0, 0, 72, 72);
-
-    //  debugger
-    this.obstacleHitBoxOne.debug = true; // for testing
-    this.obstacleHitBoxTwo.debug = true; // for testing
-    this.obstacleHitBoxThree.debug = true; // for testing
-    this.obstacleHitBoxFour.debug = true; // for testing
-    this.obstacleHitBoxFive.debug = true; // for testing
-    this.obstacleHitBoxSix.debug = true; // for testing
-    this.obstacleHitBoxSeven.debug = true; // for testing
-    this.obstacleHitBoxEight.debug = true; // for testing
-    this.obstacleHitBoxNine.debug = true; // for testing
-    this.obstacleHitBoxTen.debug = true; // for testing
 
     // add sprites to global group
     game.OBSTACLES.add(this.obstacleHitBoxOne);
@@ -665,18 +613,6 @@ class PresetF {
     this.obstacleHitBoxNine.setCollider("rectangle", 0, 0, 72, 72);
     this.obstacleHitBoxTen.setCollider("rectangle", 0, 0, 72, 72);
 
-    //  debugger
-    this.obstacleHitBoxOne.debug = true; // for testing
-    this.obstacleHitBoxTwo.debug = true; // for testing
-    this.obstacleHitBoxThree.debug = true; // for testing
-    this.obstacleHitBoxFour.debug = true; // for testing
-    this.obstacleHitBoxFive.debug = true; // for testing
-    this.obstacleHitBoxSix.debug = true; // for testing
-    this.obstacleHitBoxSeven.debug = true; // for testing
-    this.obstacleHitBoxEight.debug = true; // for testing
-    this.obstacleHitBoxNine.debug = true; // for testing
-    this.obstacleHitBoxTen.debug = true; // for testing
-
     // add sprites to global group
     game.OBSTACLES.add(this.obstacleHitBoxOne);
     game.OBSTACLES.add(this.obstacleHitBoxTwo);
@@ -810,17 +746,6 @@ class PresetG {
     this.obstacleHitBoxSeven.setCollider("rectangle", 0, 0, 72, 120);
     this.obstacleHitBoxEight.setCollider("rectangle", 0, 0, 72, 120);
     this.obstacleHitBoxNine.setCollider("rectangle", 0, 0, 72, 120);
-
-    //  debugger
-    this.obstacleHitBoxOne.debug = true; // for testing
-    this.obstacleHitBoxTwo.debug = true; // for testing
-    this.obstacleHitBoxThree.debug = true; // for testing
-    this.obstacleHitBoxFour.debug = true; // for testing
-    this.obstacleHitBoxFive.debug = true; // for testing
-    this.obstacleHitBoxSix.debug = true; // for testing
-    this.obstacleHitBoxSeven.debug = true; // for testing
-    this.obstacleHitBoxEight.debug = true; // for testing
-    this.obstacleHitBoxNine.debug = true; // for testing
 
     // add sprites to global group
     game.OBSTACLES.add(this.obstacleHitBoxOne);
@@ -967,18 +892,6 @@ class PresetH {
     this.obstacleHitBoxNine.setCollider("rectangle", 0, 0, 72, 168);
     this.obstacleHitBoxTen.setCollider("rectangle", 0, 0, 72, 168);
 
-    //  debugger
-    this.obstacleHitBoxOne.debug = true; // for testing
-    this.obstacleHitBoxTwo.debug = true; // for testing
-    this.obstacleHitBoxThree.debug = true; // for testing
-    this.obstacleHitBoxFour.debug = true; // for testing
-    this.obstacleHitBoxFive.debug = true; // for testing
-    this.obstacleHitBoxSix.debug = true; // for testing
-    this.obstacleHitBoxSeven.debug = true; // for testing
-    this.obstacleHitBoxEight.debug = true; // for testing
-    this.obstacleHitBoxNine.debug = true; // for testing
-    this.obstacleHitBoxTen.debug = true; // for testing
-
     // add sprites to global group
     game.OBSTACLES.add(this.obstacleHitBoxOne);
     game.OBSTACLES.add(this.obstacleHitBoxTwo);
@@ -1100,16 +1013,6 @@ class PresetI {
     this.obstacleHitBoxSix.setCollider("rectangle", 0, 0, 72, 120);
     this.obstacleHitBoxSeven.setCollider("rectangle", 0, 0, 72, 72);
     this.obstacleHitBoxEight.setCollider("rectangle", 0, 0, 72, 72);
-
-    //  debugger
-    this.obstacleHitBoxOne.debug = true; // for testing
-    this.obstacleHitBoxTwo.debug = true; // for testing
-    this.obstacleHitBoxThree.debug = true; // for testing
-    this.obstacleHitBoxFour.debug = true; // for testing
-    this.obstacleHitBoxFive.debug = true; // for testing
-    this.obstacleHitBoxSix.debug = true; // for testing
-    this.obstacleHitBoxSeven.debug = true; // for testing
-    this.obstacleHitBoxEight.debug = true; // for testing
 
     // add sprites to global group
     game.OBSTACLES.add(this.obstacleHitBoxOne);
@@ -1242,17 +1145,6 @@ class PresetJ {
     this.obstacleHitBoxSeven.setCollider("rectangle", 0, 0, 72, 168);
     this.obstacleHitBoxEight.setCollider("rectangle", 0, 0, 72, 72);
     this.obstacleHitBoxNine.setCollider("rectangle", 0, 0, 168, 72);
-
-    //  debugger
-    this.obstacleHitBoxOne.debug = true; // for testing
-    this.obstacleHitBoxTwo.debug = true; // for testing
-    this.obstacleHitBoxThree.debug = true; // for testing
-    this.obstacleHitBoxFour.debug = true; // for testing
-    this.obstacleHitBoxFive.debug = true; // for testing
-    this.obstacleHitBoxSix.debug = true; // for testing
-    this.obstacleHitBoxSeven.debug = true; // for testing
-    this.obstacleHitBoxEight.debug = true; // for testing
-    this.obstacleHitBoxNine.debug = true; // for testing
 
     // add sprites to global group
     game.OBSTACLES.add(this.obstacleHitBoxOne);

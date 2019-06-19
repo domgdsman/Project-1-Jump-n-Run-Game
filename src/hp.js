@@ -19,8 +19,6 @@ class Healthpack {
     this.hpHitBox.addAnimation("heart", healthPack);
 
     this.hpHitBox.setCollider("circle", 0, -2, 20);
-
-    // this.hpHitBox.debug = true; // remove when finished
   }
 
   draw() {

@@ -33,8 +33,6 @@ class Diamond {
     );
 
     this.diamondHitBox.color = this.diamondColor;
-
-    // this.diamondHitBox.debug = true; // remove when finished
   }
 
   draw() {

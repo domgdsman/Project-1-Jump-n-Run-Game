@@ -19,8 +19,6 @@ class Clock {
     this.clockHitBox.addAnimation("clock", timePlus);
 
     this.clockHitBox.setCollider("circle", 0, 2, 22);
-
-    // this.clockHitBox.debug = true; // remove when finished
   }
 
   draw() {
