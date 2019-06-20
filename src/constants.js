@@ -1,7 +1,7 @@
 const WIDTH = 1200;
 const HEIGHT = 800;
-const TIMES_PLAYINGFIELD = 10; // TIMES_PLAYINGFIELD + starting area !!!
-const SCENE_W = WIDTH * TIMES_PLAYINGFIELD; // = WIDTH * i in the background.js  (set to 20 in the end with 5 crystals each) + empty starting area
+const TIMES_PLAYINGFIELD = 20;
+const SCENE_W = WIDTH * TIMES_PLAYINGFIELD;
 const SCENE_H = 800;
 const GRAVITY = 0.35;
 

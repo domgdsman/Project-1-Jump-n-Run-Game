@@ -8,6 +8,7 @@ class Game {
     this.hpArray = [];
     this.clockArray = [];
     this.rocketsArray = [];
+    this.bulletTime = 1;
   }
 
   setup() {
@@ -41,7 +42,7 @@ class Game {
     }
 
     this.HEALTHPACKS = new Group();
-    for (let i = 0; i < Math.round(TIMES_PLAYINGFIELD / 3); i++) {
+    for (let i = 0; i < Math.round(TIMES_PLAYINGFIELD / 5); i++) {
       this.hpArray.push(new Healthpack());
       this.hpArray[i].setup();
       this.HEALTHPACKS.add(this.hpArray[i].hpHitBox);
@@ -50,7 +51,7 @@ class Game {
     }
 
     this.CLOCKS = new Group();
-    for (let i = 0; i < Math.round(TIMES_PLAYINGFIELD / 3); i++) {
+    for (let i = 0; i < Math.round(TIMES_PLAYINGFIELD / 10); i++) {
       this.clockArray.push(new Clock());
       this.clockArray[i].setup();
       this.CLOCKS.add(this.clockArray[i].clockHitBox);
@@ -98,11 +99,15 @@ class Game {
     });
 
     // possible game endings by death or time out
-    if (this.player.health === 0) this.game.over();
+    if (this.player.health === 0) {
+      gameOver.play();
+      this.game.over();
+    }
     if (frameCount % 60 == 0 && this.timer > 0) {
       this.timer--;
     }
     if (this.timer === 0) {
+      gameOver.play();
       this.game.over();
     }
   }

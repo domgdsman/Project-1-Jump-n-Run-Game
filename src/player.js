@@ -11,6 +11,7 @@ class Player {
     this.color = color;
     this.status = "idle";
     this.onObstacle = false;
+    this.onGround = true; // testing
   }
 
   setup() {
@@ -62,7 +63,7 @@ class Player {
   }
 
   collectDiamond(collected) {
-    // play a sound for collecting the diamond and display score
+    diamondPickUp.play();
     if (this.color === collected.color) {
       this.score += 10;
     } else this.score += 5;
@@ -70,6 +71,7 @@ class Player {
   }
 
   collectHp(collected) {
+    healthPickup.play();
     collected.remove();
     if (this.health === 3) {
       return;
@@ -79,13 +81,24 @@ class Player {
   }
 
   collectClock(collected) {
-    game.timer += 10;
+    game.timer += 15;
     collected.remove();
+    // start bullet time
+    bulletTimeStart.play();
+    game.bulletTime = 0.3;
+    // end bullet time
+    setTimeout(() => {
+      game.bulletTime = 1;
+    }, 15000);
+    setTimeout(() => {
+      bulletTimeEnd.play();
+    }, 13000);
   }
 
   receiveDamage(rocket) {
     rocket.changeAnimation("explode", rocketExplosion);
     this.status = "hurt";
+    if (rocket.damagePotentiale > 0) rocketHit.play();
 
     setTimeout(() => {
       this.status = "idle";
@@ -99,6 +112,10 @@ class Player {
 
   draw() {
     drawSprite(this.hitBox);
+
+    if (this.hitBox.position.y < 690) {
+      this.onGround = false;
+    } else this.onGround = true;
 
     // camera fixed on player x-position and y = centered
     camera.position.x = this.hitBox.position.x;
@@ -145,10 +162,18 @@ class Player {
     this.hitBox.changeAnimation(this.status);
 
     if (keyIsDown(LEFT_ARROW)) {
+      if (this.onGround === true && this.hitBox.collide(game.OBSTACLES)) {
+        // wall walking bug fix
+        return;
+      }
       this.hitBox.mirrorX(-1);
       this.hitBox.changeAnimation("run", this.runAnimation);
       this.hitBox.setSpeed(10, 180);
     } else if (keyIsDown(RIGHT_ARROW)) {
+      if (this.onGround === true && this.hitBox.collide(game.OBSTACLES)) {
+        // wall walking bug fix
+        return;
+      }
       this.hitBox.mirrorX(1);
       this.hitBox.changeAnimation("run", this.runAnimation);
       this.hitBox.setSpeed(10, 0);
@@ -163,7 +188,7 @@ class Player {
     );
 
     this.hitBox.collide(game.CLOCKS, (collector, collected) =>
-      this.collectHp(collected)
+      this.collectClock(collected)
     );
 
     this.hitBox.collide(game.ROCKETS, (player, rocket) =>
