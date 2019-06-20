@@ -11,7 +11,7 @@ class Player {
     this.color = color;
     this.status = "idle";
     this.onObstacle = false;
-    this.onGround = true; // testing
+    this.onGround = true;
   }
 
   setup() {
