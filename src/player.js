@@ -31,19 +31,19 @@ class Player {
     );
 
     this.idleSpriteSheet = loadSpriteSheet(
-      `../assets/Dino Sprites/${this.color}_idle_x4_72x72.png`,
+      `assets/Dino Sprites/${this.color}_idle_x4_72x72.png`,
       72,
       72,
       4
     );
     this.runSpriteSheet = loadSpriteSheet(
-      `../assets/Dino Sprites/${this.color}_running_x6_72x72.png`,
+      `assets/Dino Sprites/${this.color}_running_x6_72x72.png`,
       72,
       72,
       6
     );
     this.hurtSpriteSheet = loadSpriteSheet(
-      `../assets/Dino Sprites/${this.color}_hurt_x4_72x72.png`,
+      `assets/Dino Sprites/${this.color}_hurt_x4_72x72.png`,
       72,
       72,
       4
