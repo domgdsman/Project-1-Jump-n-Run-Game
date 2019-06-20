@@ -1,14 +1,13 @@
-const game = new Game("red");
+let landingPage = new Landing();
 
 function setup() {
   frameRate(60);
   let canvas = createCanvas(WIDTH, HEIGHT);
   canvas.parent("game-area");
 
-  // sound effects
-
-  menuMusic = loadSound("../assets/sounds/Menu Music/happy.mp3");
   selectPlayer = loadSound("../assets/sounds/Player Select Sound/Rise03.mp3");
+  jumpSound = loadSound("../assets/sounds/jump/jump.mp3");
+  jumpSound.setVolume(0.5);
   diamondPickUp = loadSound(
     "../assets/sounds/Diamond Collect Sound/Coin01.mp3"
   );
@@ -28,15 +27,17 @@ function setup() {
   );
   gameOver = loadSound("../assets/sounds/Death Sound/NFF-lose.mp3");
 
-  game.setup();
+  landingPage.setup();
 }
 
 function draw() {
   clear();
-  game.draw();
+  if (PAGE === "landing") landingPage.draw();
+  if (PAGE === "game") game.draw();
 }
 
 function keyPressed() {
-  if (keyCode == 32) game.player.jump();
-  else return;
+  if (keyCode == 32) {
+    if (PAGE === "game") game.player.jump();
+  } else return;
 }

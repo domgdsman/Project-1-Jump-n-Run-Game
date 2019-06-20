@@ -1,11 +1,72 @@
+let PAGE = "landing";
+let game;
 const WIDTH = 1200;
 const HEIGHT = 800;
-const TIMES_PLAYINGFIELD = 20;
+const TIMES_PLAYINGFIELD = 30;
 const SCENE_W = WIDTH * TIMES_PLAYINGFIELD;
 const SCENE_H = 800;
 const GRAVITY = 0.35;
 
 function preload() {
+  // font
+  arcadeClassic = loadFont("/assets/font/ARCADECLASSIC.woff");
+
+  // main menu background
+  landingBg = loadImage("../assets/Backgrounds/main menu/Hills Free.png");
+  landingFloor = loadImage(
+    "../assets/Backgrounds/main menu/gras_block_1200x48.png"
+  );
+
+  // dino sprites
+  blueIdle = loadSpriteSheet(
+    "../assets/Dino Sprites/blue_idle_x4_72x72.png",
+    72,
+    72,
+    4
+  );
+  blueRun = loadSpriteSheet(
+    "../assets/Dino Sprites/blue_running_x6_72x72.png",
+    72,
+    72,
+    6
+  );
+  redIdle = loadSpriteSheet(
+    "../assets/Dino Sprites/red_idle_x4_72x72.png",
+    72,
+    72,
+    4
+  );
+  redRun = loadSpriteSheet(
+    "../assets/Dino Sprites/red_running_x6_72x72.png",
+    72,
+    72,
+    6
+  );
+  greenIdle = loadSpriteSheet(
+    "../assets/Dino Sprites/green_idle_x4_72x72.png",
+    72,
+    72,
+    4
+  );
+  greenRun = loadSpriteSheet(
+    "../assets/Dino Sprites/green_running_x6_72x72.png",
+    72,
+    72,
+    6
+  );
+  yellowIdle = loadSpriteSheet(
+    "../assets/Dino Sprites/yellow_idle_x4_72x72.png",
+    72,
+    72,
+    4
+  );
+  yellowRun = loadSpriteSheet(
+    "../assets/Dino Sprites/yellow_running_x6_72x72.png",
+    72,
+    72,
+    6
+  );
+
   // health bar images
   health00 = loadImage("../assets/Objects/health/health00_150x48.png");
   health05 = loadImage("../assets/Objects/health/health05_150x48.png");
@@ -14,6 +75,9 @@ function preload() {
   health20 = loadImage("../assets/Objects/health/health20_150x48.png");
   health25 = loadImage("../assets/Objects/health/health25_150x48.png");
   health30 = loadImage("../assets/Objects/health/health30_150x48.png");
+
+  // diamond score
+  diamondScore = loadImage("../assets/Objects/crystals/crystal_red_64x64.png");
 
   // rockets
   rocketRotate = loadAnimation(

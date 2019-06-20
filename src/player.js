@@ -57,6 +57,7 @@ class Player {
   jump() {
     if (this.hitBox.position.y > 650) this.jumpCounter = 0;
     if (this.jumpCounter == 2) return;
+    jumpSound.play();
     this.velocity = 0;
     this.velocity -= 15;
     this.jumpCounter++;
@@ -132,19 +133,33 @@ class Player {
       this.hitBox.position.x = SCENE_W + WIDTH - this.playerWidth / 2;
     if (this.hitBox.position.y > SCENE_H) this.hitBox.position.y = SCENE_H;
 
-    // health bar
-    if (this.health === 3) image(health30, camera.position.x - width / 2, 0);
+    // health bar, score and timer
+    if (this.health === 3)
+      image(health30, camera.position.x - width / 2 + 10, 800 - 48);
     else if (this.health === 2.5)
-      image(health25, camera.position.x - width / 2, 0);
+      image(health25, camera.position.x - width / 2 + 10, 800 - 48);
     else if (this.health === 2)
-      image(health20, camera.position.x - width / 2, 0);
+      image(health20, camera.position.x - width / 2 + 10, 800 - 48);
     else if (this.health === 1.5)
-      image(health15, camera.position.x - width / 2, 0);
+      image(health15, camera.position.x - width / 2 + 10, 800 - 48);
     else if (this.health === 1)
-      image(health10, camera.position.x - width / 2, 0);
+      image(health10, camera.position.x - width / 2 + 10, 800 - 48);
     else if (this.health === 0.5)
-      image(health05, camera.position.x - width / 2, 0);
-    else image(health00, camera.position.x - width / 2, 0);
+      image(health05, camera.position.x - width / 2 + 10, 800 - 48);
+    else image(health00, camera.position.x - width / 2 + 10, 800 - 48);
+
+    image(diamondScore, camera.position.x - width / 2 + 20, 5);
+    push();
+    textSize(60);
+    fill("#001F38");
+    text(`${this.score}`, camera.position.x - 490, 60);
+    pop();
+    push();
+    textSize(60);
+    fill("#001F38");
+    text(`${game.timer}`, camera.position.x + 505, 60);
+    pop();
+    image(timePlus, camera.position.x + 445, 15);
 
     // gravity & velocity components
     this.onObstacle = false;

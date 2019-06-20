@@ -1,6 +1,6 @@
 class Game {
   constructor(color) {
-    this.timer = 60;
+    this.timer = 59;
     this.background = new Background();
     this.player = new Player(color);
     this.obstaclesArray = [];
@@ -42,7 +42,7 @@ class Game {
     }
 
     this.HEALTHPACKS = new Group();
-    for (let i = 0; i < Math.round(TIMES_PLAYINGFIELD / 5); i++) {
+    for (let i = 0; i < Math.round(TIMES_PLAYINGFIELD / 6); i++) {
       this.hpArray.push(new Healthpack());
       this.hpArray[i].setup();
       this.HEALTHPACKS.add(this.hpArray[i].hpHitBox);
@@ -65,9 +65,9 @@ class Game {
   draw() {
     this.background.draw();
 
-    this.player.draw();
-
     drawSprites(this.OBSTACLES);
+
+    this.player.draw();
 
     this.diamondsArray.forEach(function(diamond) {
       diamond.draw();
@@ -101,18 +101,22 @@ class Game {
     // possible game endings by death or time out
     if (this.player.health === 0) {
       gameOver.play();
-      this.game.over();
+      this.over();
     }
     if (frameCount % 60 == 0 && this.timer > 0) {
       this.timer--;
     }
     if (this.timer === 0) {
       gameOver.play();
-      this.game.over();
+      this.over();
     }
   }
 
   over() {
+    textSize(80);
+    fill("#001F38");
+    text("GAME    OVER", camera.position.x - 180, camera.position.y - 30);
     noLoop();
+    setInterval(() => location.reload(), 1500);
   }
 }
