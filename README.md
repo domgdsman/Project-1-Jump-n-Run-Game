@@ -20,7 +20,7 @@ Cheers😎
 
 Dominik
 
-PS: Try to beat my current high-score: 490 pts!😉
+PS: Try to beat my current high-score: 490 pts!😉\
 If you like a challenge, try setting rocket.speed to 15 and spawn rockets in the game.draw() every 20 frames!
 
 
