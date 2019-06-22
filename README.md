@@ -1,4 +1,4 @@
-# Project-1-Raptor-vs-Rockets
+# Project-1-Raptor-Rockets
 Ironhack Full Stack Web Dev Course first Project: Building a game with JavaScript in five days
 
 ![alt text](raptor_rockets.png?raw=true "Raptor Rockets")
