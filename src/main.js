@@ -5,7 +5,7 @@ function setup() {
   let canvas = createCanvas(WIDTH, HEIGHT);
   canvas.parent("game-area");
 
-  menuMusic = createAudio("../assets/sounds/Menu Music/happy.mp3");
+  menuMusic = createAudio("assets/sounds/Menu Music/happy.mp3");
   selectPlayer = loadSound("assets/sounds/Player Select Sound/Rise03.mp3");
   jumpSound = loadSound("assets/sounds/jump/jump.mp3");
   jumpSound.setVolume(0.5);

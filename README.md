@@ -1,7 +1,8 @@
-# Project-1-Raptor-Rockets
+# Project-1-Raptor-vs-Rockets
+
 Ironhack Full Stack Web Dev Course first Project: Building a game with JavaScript in five days
 
-![alt text](raptor_rockets.png?raw=true "Raptor Rockets")
+![alt text](raptor_rockets.png?raw=true "Raptor vs Rockets")
 
 Raptor Rockets is my first project as part of the Ironhack Full Stack Web Development program. The task was to develop a game
 in Javascript in only five days.
@@ -22,7 +23,6 @@ Dominik
 
 PS: Try to beat my current high-score: 490 pts!😉\
 If you like a challenge, try setting rocket.speed to 15 and spawn rockets in the game.draw() every 20 frames!
-
 
 Credits:
 
