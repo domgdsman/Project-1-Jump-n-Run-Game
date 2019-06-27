@@ -2,7 +2,7 @@ let PAGE = "landing";
 let game;
 const WIDTH = 1200;
 const HEIGHT = 800;
-const TIMES_PLAYINGFIELD = 30;
+const TIMES_PLAYINGFIELD = 20;
 const SCENE_W = WIDTH * TIMES_PLAYINGFIELD;
 const SCENE_H = 800;
 const GRAVITY = 0.35;

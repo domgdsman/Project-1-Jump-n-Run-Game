@@ -6,8 +6,9 @@ class Diamond {
     this.diamondColor = this.diamondColorsArray[Math.floor(Math.random() * 4)];
     this.diamondX =
       WIDTH +
-      Math.ceil(Math.random() * TIMES_PLAYINGFIELD * WIDTH) -
-      this.diamondWidth;
+      Math.ceil(
+        Math.random() * TIMES_PLAYINGFIELD * (WIDTH - this.diamondWidth)
+      );
     this.diamondY = this.diamondWidth + Math.random() * 600;
   }
 
@@ -37,5 +38,9 @@ class Diamond {
 
   draw() {
     drawSprite(this.diamondHitBox);
+    if (frameCount % 3 === 0)
+      this.diamondHitBox.displace(game.player.hitBox, (collected, collector) =>
+        game.player.collectDiamond(collected)
+      );
   }
 }

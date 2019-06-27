@@ -9,6 +9,8 @@ class Game {
     this.clockArray = [];
     this.rocketsArray = [];
     this.bulletTime = 1;
+    this.currentFrame = 0;
+    this.objectsPerFrame = [];
   }
 
   setup() {
@@ -60,27 +62,69 @@ class Game {
       this.clockArray[i].clockHitBox.bounce(this.HEALTHPACKS);
     }
     this.ROCKETS = new Group();
+
+    // ##### code here #####
+
+    for (let i = 0; i <= TIMES_PLAYINGFIELD; i++) {
+      this.objectsPerFrame.push(Object.assign({}));
+      this.objectsPerFrame[i].obstacles = this.obstaclesArray.filter(
+        obstacle => obstacle.x1 >= i * WIDTH && obstacle.x1 < (i + 1) * WIDTH
+      )[0];
+      this.objectsPerFrame[i].diamonds = this.diamondsArray.filter(
+        diamond =>
+          diamond.diamondX >= i * WIDTH && diamond.diamondX < (i + 1) * WIDTH
+      );
+      this.objectsPerFrame[i].hps = this.hpArray.filter(
+        hp => hp.hpX >= i * WIDTH && hp.hpX < (i + 1) * WIDTH
+      );
+      this.objectsPerFrame[i].clocks = this.clockArray.filter(
+        clock => clock.clockX >= i * WIDTH && clock.clockX < (i + 1) * WIDTH
+      );
+    }
+
+    // ##### code here #####
   }
 
   draw() {
-    this.background.draw();
+    // ##### console.log here #####
 
-    drawSprites(this.OBSTACLES);
+    // console.log(this.currentFrame);
+    // console.log(!!game.objectsPerFrame[game.currentFrame].obstacles);
+
+    // ##### console.log here #####
+    this.background.draw();
+    // ##### code here #####
+
+    this.currentFrame = Math.floor(camera.position.x / WIDTH);
+
+    for (let i = -1; i <= 1; i++) {
+      if (
+        this.currentFrame + i > 0 &&
+        this.currentFrame + i <= TIMES_PLAYINGFIELD
+      ) {
+        this.objectsPerFrame[this.currentFrame + i].obstacles.draw();
+        this.objectsPerFrame[this.currentFrame + i].diamonds.forEach(function(
+          diamond
+        ) {
+          diamond.draw();
+        });
+        this.objectsPerFrame[this.currentFrame + i].hps.forEach(function(hp) {
+          hp.draw();
+        });
+        this.objectsPerFrame[this.currentFrame + i].clocks.forEach(function(
+          clock
+        ) {
+          clock.draw();
+        });
+      }
+    }
+
+    // ##### code here #####
 
     this.player.draw();
 
-    this.diamondsArray.forEach(function(diamond) {
-      diamond.draw();
-    });
-    this.hpArray.forEach(function(healthpack) {
-      healthpack.draw();
-    });
-    this.clockArray.forEach(function(clock) {
-      clock.draw();
-    });
-
     // readying up rockets every x frames, adjust rocket spawn here
-    if (frameCount % 40 === 0) {
+    if (frameCount % 30 === 0) {
       this.rocketsArray.push(new Rocket());
       this.rocketsArray[this.rocketsArray.length - 1].setup();
       this.ROCKETS.add(
@@ -88,8 +132,8 @@ class Game {
       );
     }
 
-    // deleting rockets every x frames, adjust if it gets too laggy
-    if (frameCount % 300 === 0) {
+    // deleting rockets
+    if (this.rocketsArray.length >= 15) {
       this.rocketsArray.shift().rocketHitBox.remove();
     }
 

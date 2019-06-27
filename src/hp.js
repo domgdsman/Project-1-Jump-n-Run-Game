@@ -4,8 +4,7 @@ class Healthpack {
     this.hpHeight = 48;
     this.hpX =
       WIDTH +
-      Math.ceil(Math.random() * TIMES_PLAYINGFIELD * WIDTH) -
-      this.hpWidth;
+      Math.ceil(Math.random() * TIMES_PLAYINGFIELD * (WIDTH - this.hpWidth));
     this.hpY = this.hpWidth + Math.random() * 600;
   }
   setup() {
@@ -23,5 +22,9 @@ class Healthpack {
 
   draw() {
     drawSprite(this.hpHitBox);
+    if (frameCount % 3 === 0)
+      this.hpHitBox.displace(game.player.hitBox, (collected, collector) =>
+        game.player.collectHp(collected)
+      );
   }
 }

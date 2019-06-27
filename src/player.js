@@ -168,8 +168,13 @@ class Player {
     // stop gravity when player reaches ground or stands on obstacles
     if (this.hitBox.position.y >= 690) {
       this.velocity = 0;
-      this.hitBox.position.y = 690; // reset to ground level
-    } else if (this.hitBox.collide(game.OBSTACLES)) {
+      this.hitBox.position.y = 690;
+    } else if (
+      game.objectsPerFrame[game.currentFrame].obstacles &&
+      game.objectsPerFrame[game.currentFrame].obstacles.spritesArray.some(
+        obstacle => obstacle.displace(this.hitBox)
+      )
+    ) {
       this.velocity = 0;
       this.jumpCounter = 0;
     } else this.velocity += GRAVITY;
@@ -177,37 +182,36 @@ class Player {
     this.hitBox.changeAnimation(this.status);
 
     if (keyIsDown(LEFT_ARROW)) {
-      if (this.onGround === true && this.hitBox.collide(game.OBSTACLES)) {
-        // wall walking bug fix
+      if (
+        this.onGround === true &&
+        game.objectsPerFrame[game.currentFrame].obstacles &&
+        game.objectsPerFrame[game.currentFrame].obstacles.spritesArray.some(
+          obstacle => obstacle.displace(this.hitBox)
+        )
+      ) {
         return;
       }
       this.hitBox.mirrorX(-1);
       this.hitBox.changeAnimation("run", this.runAnimation);
-      this.hitBox.setSpeed(10, 180);
+      this.hitBox.setSpeed(8, 180);
     } else if (keyIsDown(RIGHT_ARROW)) {
-      if (this.onGround === true && this.hitBox.collide(game.OBSTACLES)) {
-        // wall walking bug fix
+      if (
+        this.onGround === true &&
+        game.objectsPerFrame[game.currentFrame].obstacles &&
+        game.objectsPerFrame[game.currentFrame].obstacles.spritesArray.some(
+          obstacle => obstacle.displace(this.hitBox)
+        )
+      ) {
         return;
       }
       this.hitBox.mirrorX(1);
       this.hitBox.changeAnimation("run", this.runAnimation);
-      this.hitBox.setSpeed(10, 0);
+      this.hitBox.setSpeed(8, 0);
     } else this.hitBox.setSpeed(0);
 
-    this.hitBox.collide(game.DIAMONDS, (collector, collected) =>
-      this.collectDiamond(collected)
-    );
-
-    this.hitBox.collide(game.HEALTHPACKS, (collector, collected) =>
-      this.collectHp(collected)
-    );
-
-    this.hitBox.collide(game.CLOCKS, (collector, collected) =>
-      this.collectClock(collected)
-    );
-
-    this.hitBox.collide(game.ROCKETS, (player, rocket) =>
-      this.receiveDamage(rocket)
-    );
+    if (frameCount % 2 === 0)
+      this.hitBox.collide(game.ROCKETS, (player, rocket) =>
+        this.receiveDamage(rocket)
+      );
   }
 }

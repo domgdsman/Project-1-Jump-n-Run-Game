@@ -116,7 +116,7 @@ class Landing {
         ) {
           setTimeout(() => {
             this.musicIsLooping = true;
-          }, 300);
+          }, 150);
         }
       } else {
         menuMusic.stop();

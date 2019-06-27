@@ -4,8 +4,7 @@ class Clock {
     this.clockHeight = 71;
     this.clockX =
       WIDTH +
-      Math.ceil(Math.random() * TIMES_PLAYINGFIELD * WIDTH) -
-      this.clockWidth;
+      Math.ceil(Math.random() * TIMES_PLAYINGFIELD * (WIDTH - this.clockWidth));
     this.clockY = this.clockWidth + Math.random() * 600;
   }
   setup() {
@@ -23,5 +22,9 @@ class Clock {
 
   draw() {
     drawSprite(this.clockHitBox);
+    if (frameCount % 3 === 0)
+      this.clockHitBox.displace(game.player.hitBox, (collected, collector) =>
+        game.player.collectClock(collected)
+      );
   }
 }

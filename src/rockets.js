@@ -8,7 +8,7 @@ class Rocket {
       camera.position.x +
       (WIDTH / 2 + Math.random() * WIDTH) * this.rocketDirection;
     this.rocketY = this.rocketHeight + Math.random() * 656;
-    this.speed = 5 * this.rocketDirection; // adjust rocket speed here
+    this.speed = (5 + 10 * Math.random()) * this.rocketDirection; // adjust rocket speed here
   }
   setup() {
     this.rocketHitBox = createSprite(

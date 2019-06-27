@@ -50,6 +50,19 @@ class PresetA {
     game.OBSTACLES.add(this.obstacleHitBoxOne);
     game.OBSTACLES.add(this.obstacleHitBoxTwo);
     game.OBSTACLES.add(this.obstacleHitBoxThree);
+
+    // create sprites array
+    this.spritesArray = [
+      this.obstacleHitBoxOne,
+      this.obstacleHitBoxTwo,
+      this.obstacleHitBoxThree
+    ];
+  }
+
+  draw() {
+    drawSprite(this.obstacleHitBoxOne);
+    drawSprite(this.obstacleHitBoxTwo);
+    drawSprite(this.obstacleHitBoxThree);
   }
 }
 
@@ -144,6 +157,25 @@ class PresetB {
     game.OBSTACLES.add(this.obstacleHitBoxFour);
     game.OBSTACLES.add(this.obstacleHitBoxFive);
     game.OBSTACLES.add(this.obstacleHitBoxSix);
+
+    // create sprites array
+    this.spritesArray = [
+      this.obstacleHitBoxOne,
+      this.obstacleHitBoxTwo,
+      this.obstacleHitBoxThree,
+      this.obstacleHitBoxFour,
+      this.obstacleHitBoxFive,
+      this.obstacleHitBoxSix
+    ];
+  }
+
+  draw() {
+    drawSprite(this.obstacleHitBoxOne);
+    drawSprite(this.obstacleHitBoxTwo);
+    drawSprite(this.obstacleHitBoxThree);
+    drawSprite(this.obstacleHitBoxFour);
+    drawSprite(this.obstacleHitBoxFive);
+    drawSprite(this.obstacleHitBoxSix);
   }
 }
 
@@ -225,6 +257,23 @@ class PresetC {
     game.OBSTACLES.add(this.obstacleHitBoxThree);
     game.OBSTACLES.add(this.obstacleHitBoxFour);
     game.OBSTACLES.add(this.obstacleHitBoxFive);
+
+    // create sprites array
+    this.spritesArray = [
+      this.obstacleHitBoxOne,
+      this.obstacleHitBoxTwo,
+      this.obstacleHitBoxThree,
+      this.obstacleHitBoxFour,
+      this.obstacleHitBoxFive
+    ];
+  }
+
+  draw() {
+    drawSprite(this.obstacleHitBoxOne);
+    drawSprite(this.obstacleHitBoxTwo);
+    drawSprite(this.obstacleHitBoxThree);
+    drawSprite(this.obstacleHitBoxFour);
+    drawSprite(this.obstacleHitBoxFive);
   }
 }
 
@@ -332,6 +381,27 @@ class PresetD {
     game.OBSTACLES.add(this.obstacleHitBoxFive);
     game.OBSTACLES.add(this.obstacleHitBoxSix);
     game.OBSTACLES.add(this.obstacleHitBoxSeven);
+
+    // create sprites array
+    this.spritesArray = [
+      this.obstacleHitBoxOne,
+      this.obstacleHitBoxTwo,
+      this.obstacleHitBoxThree,
+      this.obstacleHitBoxFour,
+      this.obstacleHitBoxFive,
+      this.obstacleHitBoxSix,
+      this.obstacleHitBoxSeven
+    ];
+  }
+
+  draw() {
+    drawSprite(this.obstacleHitBoxOne);
+    drawSprite(this.obstacleHitBoxTwo);
+    drawSprite(this.obstacleHitBoxThree);
+    drawSprite(this.obstacleHitBoxFour);
+    drawSprite(this.obstacleHitBoxFive);
+    drawSprite(this.obstacleHitBoxSix);
+    drawSprite(this.obstacleHitBoxSeven);
   }
 }
 
@@ -478,6 +548,33 @@ class PresetE {
     game.OBSTACLES.add(this.obstacleHitBoxEight);
     game.OBSTACLES.add(this.obstacleHitBoxNine);
     game.OBSTACLES.add(this.obstacleHitBoxTen);
+
+    // create sprites array
+    this.spritesArray = [
+      this.obstacleHitBoxOne,
+      this.obstacleHitBoxTwo,
+      this.obstacleHitBoxThree,
+      this.obstacleHitBoxFour,
+      this.obstacleHitBoxFive,
+      this.obstacleHitBoxSix,
+      this.obstacleHitBoxSeven,
+      this.obstacleHitBoxEight,
+      this.obstacleHitBoxNine,
+      this.obstacleHitBoxTen
+    ];
+  }
+
+  draw() {
+    drawSprite(this.obstacleHitBoxOne);
+    drawSprite(this.obstacleHitBoxTwo);
+    drawSprite(this.obstacleHitBoxThree);
+    drawSprite(this.obstacleHitBoxFour);
+    drawSprite(this.obstacleHitBoxFive);
+    drawSprite(this.obstacleHitBoxSix);
+    drawSprite(this.obstacleHitBoxSeven);
+    drawSprite(this.obstacleHitBoxEight);
+    drawSprite(this.obstacleHitBoxNine);
+    drawSprite(this.obstacleHitBoxTen);
   }
 }
 
@@ -624,6 +721,33 @@ class PresetF {
     game.OBSTACLES.add(this.obstacleHitBoxEight);
     game.OBSTACLES.add(this.obstacleHitBoxNine);
     game.OBSTACLES.add(this.obstacleHitBoxTen);
+
+    // create sprites array
+    this.spritesArray = [
+      this.obstacleHitBoxOne,
+      this.obstacleHitBoxTwo,
+      this.obstacleHitBoxThree,
+      this.obstacleHitBoxFour,
+      this.obstacleHitBoxFive,
+      this.obstacleHitBoxSix,
+      this.obstacleHitBoxSeven,
+      this.obstacleHitBoxEight,
+      this.obstacleHitBoxNine,
+      this.obstacleHitBoxTen
+    ];
+  }
+
+  draw() {
+    drawSprite(this.obstacleHitBoxOne);
+    drawSprite(this.obstacleHitBoxTwo);
+    drawSprite(this.obstacleHitBoxThree);
+    drawSprite(this.obstacleHitBoxFour);
+    drawSprite(this.obstacleHitBoxFive);
+    drawSprite(this.obstacleHitBoxSix);
+    drawSprite(this.obstacleHitBoxSeven);
+    drawSprite(this.obstacleHitBoxEight);
+    drawSprite(this.obstacleHitBoxNine);
+    drawSprite(this.obstacleHitBoxTen);
   }
 }
 
@@ -757,6 +881,31 @@ class PresetG {
     game.OBSTACLES.add(this.obstacleHitBoxSeven);
     game.OBSTACLES.add(this.obstacleHitBoxEight);
     game.OBSTACLES.add(this.obstacleHitBoxNine);
+
+    // create sprites array
+    this.spritesArray = [
+      this.obstacleHitBoxOne,
+      this.obstacleHitBoxTwo,
+      this.obstacleHitBoxThree,
+      this.obstacleHitBoxFour,
+      this.obstacleHitBoxFive,
+      this.obstacleHitBoxSix,
+      this.obstacleHitBoxSeven,
+      this.obstacleHitBoxEight,
+      this.obstacleHitBoxNine
+    ];
+  }
+
+  draw() {
+    drawSprite(this.obstacleHitBoxOne);
+    drawSprite(this.obstacleHitBoxTwo);
+    drawSprite(this.obstacleHitBoxThree);
+    drawSprite(this.obstacleHitBoxFour);
+    drawSprite(this.obstacleHitBoxFive);
+    drawSprite(this.obstacleHitBoxSix);
+    drawSprite(this.obstacleHitBoxSeven);
+    drawSprite(this.obstacleHitBoxEight);
+    drawSprite(this.obstacleHitBoxNine);
   }
 }
 
@@ -903,6 +1052,33 @@ class PresetH {
     game.OBSTACLES.add(this.obstacleHitBoxEight);
     game.OBSTACLES.add(this.obstacleHitBoxNine);
     game.OBSTACLES.add(this.obstacleHitBoxTen);
+
+    // create sprites array
+    this.spritesArray = [
+      this.obstacleHitBoxOne,
+      this.obstacleHitBoxTwo,
+      this.obstacleHitBoxThree,
+      this.obstacleHitBoxFour,
+      this.obstacleHitBoxFive,
+      this.obstacleHitBoxSix,
+      this.obstacleHitBoxSeven,
+      this.obstacleHitBoxEight,
+      this.obstacleHitBoxNine,
+      this.obstacleHitBoxTen
+    ];
+  }
+
+  draw() {
+    drawSprite(this.obstacleHitBoxOne);
+    drawSprite(this.obstacleHitBoxTwo);
+    drawSprite(this.obstacleHitBoxThree);
+    drawSprite(this.obstacleHitBoxFour);
+    drawSprite(this.obstacleHitBoxFive);
+    drawSprite(this.obstacleHitBoxSix);
+    drawSprite(this.obstacleHitBoxSeven);
+    drawSprite(this.obstacleHitBoxEight);
+    drawSprite(this.obstacleHitBoxNine);
+    drawSprite(this.obstacleHitBoxTen);
   }
 }
 
@@ -1023,6 +1199,29 @@ class PresetI {
     game.OBSTACLES.add(this.obstacleHitBoxSix);
     game.OBSTACLES.add(this.obstacleHitBoxSeven);
     game.OBSTACLES.add(this.obstacleHitBoxEight);
+
+    // create sprites array
+    this.spritesArray = [
+      this.obstacleHitBoxOne,
+      this.obstacleHitBoxTwo,
+      this.obstacleHitBoxThree,
+      this.obstacleHitBoxFour,
+      this.obstacleHitBoxFive,
+      this.obstacleHitBoxSix,
+      this.obstacleHitBoxSeven,
+      this.obstacleHitBoxEight
+    ];
+  }
+
+  draw() {
+    drawSprite(this.obstacleHitBoxOne);
+    drawSprite(this.obstacleHitBoxTwo);
+    drawSprite(this.obstacleHitBoxThree);
+    drawSprite(this.obstacleHitBoxFour);
+    drawSprite(this.obstacleHitBoxFive);
+    drawSprite(this.obstacleHitBoxSix);
+    drawSprite(this.obstacleHitBoxSeven);
+    drawSprite(this.obstacleHitBoxEight);
   }
 }
 
@@ -1156,5 +1355,30 @@ class PresetJ {
     game.OBSTACLES.add(this.obstacleHitBoxSeven);
     game.OBSTACLES.add(this.obstacleHitBoxEight);
     game.OBSTACLES.add(this.obstacleHitBoxNine);
+
+    // create sprites array
+    this.spritesArray = [
+      this.obstacleHitBoxOne,
+      this.obstacleHitBoxTwo,
+      this.obstacleHitBoxThree,
+      this.obstacleHitBoxFour,
+      this.obstacleHitBoxFive,
+      this.obstacleHitBoxSix,
+      this.obstacleHitBoxSeven,
+      this.obstacleHitBoxEight,
+      this.obstacleHitBoxNine
+    ];
+  }
+
+  draw() {
+    drawSprite(this.obstacleHitBoxOne);
+    drawSprite(this.obstacleHitBoxTwo);
+    drawSprite(this.obstacleHitBoxThree);
+    drawSprite(this.obstacleHitBoxFour);
+    drawSprite(this.obstacleHitBoxFive);
+    drawSprite(this.obstacleHitBoxSix);
+    drawSprite(this.obstacleHitBoxSeven);
+    drawSprite(this.obstacleHitBoxEight);
+    drawSprite(this.obstacleHitBoxNine);
   }
 }
